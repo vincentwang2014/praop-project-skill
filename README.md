@@ -9,16 +9,26 @@ A minimal v1: four templates and one skill file, nothing else.
 
 ```text
 praop-project-skill/
-├── SKILL.md               how an agent should use the four files below
+├── SKILL.md               Layer 1 (PRAOP Operating Kernel) + Layer 2 (how to use the four files below)
 ├── PROJECT_REPORT.md      what is this project, right now?
 ├── DEVELOPMENT_MEMORY.md  what must not be forgotten?
 ├── LESSONS_LEARNED.md     what have we already learned the hard way?
 └── TOMORROW.md            where does the next session start?
 ```
 
-Full operating discipline — when to read, when to write, when *not* to
-write, and the EDTCU plain-language gate before anything gets saved to
-`LESSONS_LEARNED.md` — is in `SKILL.md`. Read that first.
+`SKILL.md` has two layers, and they're not the same thing:
+
+- **Layer 1 — PRAOP Operating Kernel.** A short (10-rule) set of how to
+  *think and act* during real work — treat your own conclusions as
+  probabilistic, prefer artifacts over memory, separate observation from
+  interpretation, verify before declaring done, reopen assumptions
+  reality disagrees with, and don't let controls (including this skill's
+  own PRAOP-awareness) compound into ceremony.
+- **Layer 2 — Project Memory / Handoff.** The four files below, and when
+  to read/write them.
+
+A skill that only maintains four handoff files is recording discipline,
+not PRAOP awareness. Read `SKILL.md` first — both layers are there.
 
 ## Why this exists
 
@@ -49,10 +59,30 @@ This repo is that practice, written down as something else can try.
 ## Status
 
 **Observed / Active**, in Open PRAOP's own terms: validated through
-repeated real use on one project. Not yet tried on a second. Treat this
-as a working v1 to pilot, not a settled practice — if you try it and it
-breaks down somewhere, that's exactly the kind of finding that should
-feed back into both this skill and Open PRAOP itself.
+repeated real use on one project. Pilot 001 (a second, independent
+project and agent) is in progress. Treat this as a working v1 to pilot,
+not a settled practice — if you try it and it breaks down somewhere,
+that's exactly the kind of finding that should feed back into both this
+skill and Open PRAOP itself.
+
+## Revisions
+
+**2026-09-04 — added Layer 1, the PRAOP Operating Kernel.** The original
+v1 was almost entirely Layer 2 (four-file handoff discipline), with
+PRAOP vocabulary showing up mainly as classification hints for
+`LESSONS_LEARNED.md` entries. That's recording discipline, not PRAOP
+awareness — an agent could maintain the four files perfectly while never
+actually behaving any differently during the work itself. Added a short,
+10-rule kernel governing behavior throughout a session (assumption
+handling, artifact-over-memory, verification-as-completion, control
+accretion awareness, no-fit-is-valid), explicitly scoped to stay a
+kernel — it does not carry Open PRAOP's case corpus, pattern
+definitions, evidence protocol, or promotion rules, which remain
+canonical in Open PRAOP only. No new files, no new vocabulary; every
+kernel rule either names an existing Open PRAOP principle directly
+(Artifact > Memory, Knowledge Is Not Enforcement, No Fit Is Valid) or is
+stated as this skill's own operating behavior without inventing a new
+named doctrine.
 
 ## Relationship to Open PRAOP
 
