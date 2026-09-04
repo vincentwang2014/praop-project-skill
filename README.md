@@ -43,7 +43,8 @@ This repo is that practice, written down as something else can try.
 - No installation guide for specific tools, no bootstrap script, no CLI.
   Copy the files in, per the one paragraph in `SKILL.md`. If this proves
   itself on a second project, that tooling is the natural next step —
-  not before.
+  not before, and it'll live in this same repo (a `scripts/` directory,
+  its own `LICENSE-CODE`) rather than a separate one.
 
 ## Status
 
@@ -66,13 +67,21 @@ as a real Case.
 
 ## License
 
-Mozilla Public License 2.0 — see `LICENSE`. File-level copyleft: copying
-these files unmodified into your own project (private or public) carries
-no obligation beyond keeping the license notice; modifying and then
-distributing them requires releasing those modifications under MPL 2.0
-too. This is a different license than Open PRAOP's CC BY-SA 4.0 (which
-covers cases, patterns, practices, and playbooks) — deliberately, since
-this repo is expected to grow actual tooling (a CLI, possibly) beyond
-today's markdown-only v1, and MPL avoids a license transition when that
-happens. The "PRAOP" / "Open PRAOP" name and logo are not covered by
-this license, matching the same carve-out in Open PRAOP's own `LICENSE`.
+**Dual-licensed by file type, in one repo — not split across repos.**
+Everything currently here (`SKILL.md`, the templates, this README) is
+content, licensed CC BY-SA 4.0 — see `LICENSE-CONTENT`, matching Open
+PRAOP's own content license exactly. Copying these files unmodified into
+your own project (private or commercial) carries no obligation beyond
+keeping the license notice; publicly distributing a *modified* version
+of the files themselves requires keeping that modification under CC
+BY-SA 4.0 too.
+
+If this repo later grows actual executable code (a CLI, a session-end
+updater, a format/de-identification checker), that code will live in its
+own directory (e.g. `scripts/`) under a separate `LICENSE-CODE` — default
+plan is Apache 2.0, decided when the code actually exists rather than
+speculatively now. No need to fork this into a second repo for that; one
+repo, two licenses, scoped by directory.
+
+The "PRAOP" / "Open PRAOP" name and logo are not covered by either
+license, matching the same carve-out in Open PRAOP's own `LICENSE`.

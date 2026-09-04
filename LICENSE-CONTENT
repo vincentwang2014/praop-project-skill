@@ -1,0 +1,77 @@
+PRAOP Project Skill — SKILL.md, templates, and documentation
+Copyright (c) 2026 Open PRAOP contributors
+
+This work is licensed under the Creative Commons Attribution-ShareAlike
+4.0 International License (CC BY-SA 4.0).
+
+You are free to:
+
+  Share    — copy and redistribute the material in any medium or format
+  Adapt    — remix, transform, and build upon the material
+
+for any purpose, including commercially, under the following terms:
+
+  Attribution — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any
+  reasonable manner, but not in any way that suggests the licensor
+  endorses you or your use.
+
+  ShareAlike — If you remix, transform, or build upon the material, you
+  must distribute your contributions under the same license as the
+  original.
+
+No additional restrictions — You may not apply legal terms or
+technological measures that legally restrict others from doing anything
+the license permits.
+
+Full legal text:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Human-readable summary:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+---
+
+## Scope
+
+This license covers every file currently in this repository —
+`SKILL.md`, the four template files (`PROJECT_REPORT.md`,
+`DEVELOPMENT_MEMORY.md`, `LESSONS_LEARNED.md`, `TOMORROW.md`), and
+`README.md`. All of it is procedural knowledge and text, not executable
+code, which is why it's licensed as content rather than software.
+
+**Commercial use is explicitly permitted.** Use this skill inside a
+private, proprietary, or commercial project freely — copying these files
+unmodified into your own project carries no obligation beyond keeping
+this license notice. If you publicly distribute a *modified* version of
+these files themselves (as opposed to just using them privately), that
+modified version must carry the same CC BY-SA 4.0 license — improvements
+to the skill stay shared.
+
+## What is NOT covered by this license
+
+- **The "PRAOP" / "Open PRAOP" name and any associated logo or
+  trademark.** Same carve-out as
+  [Open PRAOP's own LICENSE](https://github.com/vincentwang2014/open-praop/blob/master/LICENSE).
+  You may fork and adapt this skill and describe it as "based on PRAOP,"
+  but not represent it as the official project or an official
+  certification.
+- **Future code.** If this repo later grows actual executable tooling
+  (a CLI, a session-end updater, a de-identification or format checker,
+  etc. — see `README.md`), that code will live under a directory of its
+  own (e.g. `scripts/`) and carry a separate `LICENSE-CODE` file, added
+  at that point rather than decided speculatively now. Default plan is
+  Apache License 2.0, but that's not locked in until the code exists.
+  Until then, this repository contains no code and this is its only
+  license file.
+
+## Contributions
+
+By submitting a contribution (an edit to `SKILL.md`, a template, or
+documentation) for inclusion in this repository, you represent that you
+have the right to submit it, and you agree that, if accepted, it may be
+distributed under CC BY-SA 4.0 on the same terms as the rest of the
+repository. You retain the rights to your own original contribution;
+this is a license grant to the project, not a transfer of ownership.
+
+This license does not constitute legal, compliance, or safety advice.
