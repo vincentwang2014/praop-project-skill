@@ -280,16 +280,24 @@ and either way require an explicit human decision.
 
 ## Installing
 
-Copy this skill's directory into the target project as
-`.claude/skills/praop/` (or your tool's equivalent — e.g. `AGENTS.md` for
-Codex-style agents; inline the kernel and file discipline there if a
-dedicated skill directory doesn't exist). Copy the four template files
-into the project (root, or wherever project docs live) and fill in
-`PROJECT_REPORT.md` and `DEVELOPMENT_MEMORY.md` with what's true today —
-don't backfill history that doesn't matter going forward. If the project
-already has equivalent files under different names, map roles to them
-instead of renaming anything — the four *roles* are what matter, not the
-filenames.
+In this repo, this skill lives at `skills/praop/` and the four template
+files live at `templates/`. Copy `skills/praop/` into the target
+project as `.claude/skills/praop/` (or your tool's equivalent — e.g.
+`AGENTS.md` for Codex-style agents; inline the kernel and file
+discipline there if a dedicated skill directory doesn't exist). Copy
+`templates/*` into the project (root, or wherever project docs live)
+and fill in `PROJECT_REPORT.md` and `DEVELOPMENT_MEMORY.md` with what's
+true today — don't backfill history that doesn't matter going forward.
+If the project already has equivalent files under different names, map
+roles to them instead of renaming anything — the four *roles* are what
+matter, not the filenames.
+
+Optionally, also copy `skills/praop-case-draft/` as
+`.claude/skills/praop-case-draft/` — a separate, optional companion for
+turning a noticed Potential PRAOP Case into a structured, reviewable
+draft. This skill only notices and mentions one; drafting is that
+skill's job, and only runs when explicitly invoked. See
+`skills/praop-case-draft/SKILL.md`.
 
 ## Status
 

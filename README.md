@@ -5,18 +5,49 @@
 > cases, patterns, evidence rules, and the methodology itself, go there
 > — this repo doesn't restate any of it, only references it.
 
-A minimal v1: four templates and one skill file, nothing else.
+A small family of skills sharing one four-file operating discipline:
+**`praop`**, the mandatory operating kernel, and **`praop-case-draft`**,
+a separate, optional, explicitly-invoked companion for turning a
+noticed Potential PRAOP Case into a structured, human-reviewable draft.
 
 ```text
 praop-project-skill/
-├── SKILL.md               Layer 1 (PRAOP Operating Kernel) + Layer 2 (how to use the four files below)
-├── PROJECT_REPORT.md      what is this project, right now?
-├── DEVELOPMENT_MEMORY.md  what must not be forgotten?
-├── LESSONS_LEARNED.md     what have we already learned the hard way?
-└── TOMORROW.md            where does the next session start?
+├── skills/
+│   ├── praop/
+│   │   └── SKILL.md              Layer 1 (PRAOP Operating Kernel) + Layer 2 (how to use the four template files)
+│   └── praop-case-draft/
+│       └── SKILL.md              optional companion: drafts a noticed case, only when explicitly invoked
+└── templates/
+    ├── PROJECT_REPORT.md         what is this project, right now?
+    ├── DEVELOPMENT_MEMORY.md     what must not be forgotten?
+    ├── LESSONS_LEARNED.md        what have we already learned the hard way?
+    └── TOMORROW.md               where does the next session start?
 ```
 
-`SKILL.md` has two layers, and they're not the same thing:
+## Migration note (2026-09-05)
+
+This repo used to be flat — `SKILL.md` and the four template files sat
+directly at repo root. It's now `skills/*` (one directory per skill)
+and `templates/*`, so a second skill (`praop-case-draft`) has a clean
+home instead of competing with the first for the root-level `SKILL.md`
+filename. **`skills/praop/SKILL.md`** and **`skills/praop-case-draft/
+SKILL.md`** are each the sole canonical source for their skill — no
+root-level duplicate is kept. If you cloned or copied from the old flat
+layout, re-copy from `skills/` and `templates/` now.
+
+## Installing
+
+- `skills/praop/` → your project's `.claude/skills/praop/` (mandatory
+  kernel).
+- `skills/praop-case-draft/` → your project's
+  `.claude/skills/praop-case-draft/` (optional; only needed if you want
+  the case-drafting workflow).
+- `templates/*` → your project's root, or wherever project docs live.
+
+See each skill's own `SKILL.md` for what to fill in and how the two
+skills hand off to each other.
+
+`skills/praop/SKILL.md` has two layers, and they're not the same thing:
 
 - **Layer 1 — PRAOP Operating Kernel.** A short (10-rule) set of how to
   *think and act* during real work — treat your own conclusions as
@@ -24,11 +55,12 @@ praop-project-skill/
   interpretation, verify before declaring done, reopen assumptions
   reality disagrees with, and don't let controls (including this skill's
   own PRAOP-awareness) compound into ceremony.
-- **Layer 2 — Project Memory / Handoff.** The four files below, and when
-  to read/write them.
+- **Layer 2 — Project Memory / Handoff.** The four template files, and
+  when to read/write them.
 
 A skill that only maintains four handoff files is recording discipline,
-not PRAOP awareness. Read `SKILL.md` first — both layers are there.
+not PRAOP awareness. Read `skills/praop/SKILL.md` first — both layers
+are there.
 
 ## Why this exists
 
@@ -44,26 +76,35 @@ This repo is that practice, written down as something else can try.
 
 ## What this deliberately isn't (yet)
 
-- No fifth "incidents" file. Capture a real incident inline in
-  `LESSONS_LEARNED.md` when one actually happens — don't scaffold an
-  empty file waiting for one. See `SKILL.md`.
+- No fifth "incidents" file for ordinary lessons. Capture a real
+  incident inline in `LESSONS_LEARNED.md` when one actually happens —
+  don't scaffold an empty file waiting for one. See
+  `skills/praop/SKILL.md`. (A case substantial enough for full
+  drafting goes through `praop-case-draft` instead, which does use its
+  own file — a deliberate choice in that skill, not this one.)
 - No separate vocabulary for "how sure are we about this." Reuses
   [Open PRAOP](https://github.com/vincentwang2014/open-praop)'s
   evidence levels (E0–E3) and Confidence/Status pairs directly.
-- No installation guide for specific tools, no bootstrap script, no CLI.
-  Copy the files in, per the one paragraph in `SKILL.md`. If this proves
-  itself on a second project, that tooling is the natural next step —
-  not before, and it'll live in this same repo (a `scripts/` directory,
-  its own `LICENSE-CODE`) rather than a separate one.
+- No bootstrap script, no CLI — just the copy-in steps under
+  "Installing" above. If this proves itself further, that tooling is
+  the natural next step — not before, and it'll live in this same repo
+  (a `scripts/` directory, its own `LICENSE-CODE`) rather than a
+  separate one.
 
 ## Status
 
-**Observed / Active**, in Open PRAOP's own terms: validated through
-repeated real use on one project. Pilot 001 (a second, independent
-project and agent) is in progress. Treat this as a working v1 to pilot,
-not a settled practice — if you try it and it breaks down somewhere,
-that's exactly the kind of finding that should feed back into both this
-skill and Open PRAOP itself.
+**`praop`: Observed / Active**, in Open PRAOP's own terms: validated
+through repeated real use on one project. Pilot 001 (a second,
+independent project and agent) is in progress. Treat this as a working
+v1 to pilot, not a settled practice — if you try it and it breaks down
+somewhere, that's exactly the kind of finding that should feed back
+into both this skill and Open PRAOP itself.
+
+**`praop-case-draft`: Observed / Active**, validated across three real
+drafts before publication (one revised and retained as a Potential
+PRAOP Case, two rejected as case material but each still producing a
+real project-local lesson). See its own `SKILL.md` for the full
+revision history.
 
 ## Revisions
 
@@ -98,8 +139,9 @@ as a real Case.
 ## License
 
 **Dual-licensed by file type, in one repo — not split across repos.**
-Everything currently here (`SKILL.md`, the templates, this README) is
-content, licensed CC BY-SA 4.0 — see `LICENSE-CONTENT`, matching Open
+Everything currently here (both skills under `skills/`, the templates,
+this README) is content, licensed CC BY-SA 4.0 — see
+`LICENSE-CONTENT`, matching Open
 PRAOP's own content license exactly. Copying these files unmodified into
 your own project (private or commercial) carries no obligation beyond
 keeping the license notice; publicly distributing a *modified* version
