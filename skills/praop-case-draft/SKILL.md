@@ -307,20 +307,39 @@ The human's response is one of:
   draft. Say so explicitly in the disposition when it applies, rather
   than treating Reject as "discard."
 
-### 8. Open PRAOP submission — separate, later, explicit
+### 8. Open PRAOP submission — separate, later, explicit, and never the raw draft
 
 Only after an explicit **Approve**, and only if the human separately
-asks to submit, follow Open PRAOP's own submission and de-identification
-process for that repo. This skill's job ends at the reviewable draft;
-it does not open a PR, does not push to `open-praop`, and does not
-decide submission is warranted on its own.
+asks to submit, follow Open PRAOP's own submission process for that
+repo. This skill's job ends at the reviewable draft; it does not open
+a PR, does not push to `open-praop`, and does not decide submission is
+warranted on its own.
+
+**The working draft this skill produced is never what gets submitted.**
+Per step 6, it may legitimately carry identifying detail kept for
+causality — that's exactly why it can't go public as-is. Submission
+means producing the *separate*, de-identified, combination-risk-checked
+version described in step 6, and only that version ever reaches a PR.
+Open PRAOP's own protocol (§11) explicitly keeps no public `drafts/` or
+`case-drafts/` directory in that repo — this skill's own `case-drafts/`
+output directory (below) is a private, local convention for the
+invoking project, not something that gets pushed to a public repo,
+ever.
+
+**A PR is public the instant it opens, not after it merges.** Closing
+or rejecting it later doesn't undo that. Never open a PR "to get
+feedback" before the de-identification and combination-risk check in
+step 6 are both complete — do that check first, on the private draft,
+then open the PR with only the already-de-identified content.
 
 ## Naming and location
 
 `case-drafts/praop-case-draft-YYYY-MM-DD-NNN-short-slug.md` in the
 project this skill is invoked from (create the `case-drafts/` directory
-if it doesn't exist). `NNN` is a zero-padded sequence number per day,
-per project, so two same-day drafts don't collide.
+if it doesn't exist) — **local and private to the invoking project.**
+`NNN` is a zero-padded sequence number per day, per project, so two
+same-day drafts don't collide. Never treat this directory as something
+to publish or mirror into `open-praop` — see step 8.
 
 ## Where this skill ends
 
@@ -344,7 +363,7 @@ flagged.
 publication (one revised and retained as a Potential PRAOP Case, two
 rejected as case material but each still producing a real project-local
 lesson — see the disposition philosophy in step 7). Treat this as a
-working v2.3, not a fully settled interface.
+working v2.4, not a fully settled interface.
 
 **Revision history:**
 
@@ -388,3 +407,10 @@ working v2.3, not a fully settled interface.
   (`skills/praop-case-draft/`), alongside a repo-wide move from a flat
   layout to `skills/*` + `templates/*`. No content change from v2.3 in
   this move.
+- 2026-09-05 v2.4 — hardened step 8 and "Naming and location" after a
+  reviewer question surfaced a real gap: nothing had explicitly said
+  the raw working draft must never reach the public `open-praop` repo,
+  or that a PR is public the moment it opens (not after merging).
+  Matches a same-day Open PRAOP protocol hardening (§11's "no public
+  drafts/ directory" rule, §12's "de-identify before the PR exists, not
+  during its review" rule).
