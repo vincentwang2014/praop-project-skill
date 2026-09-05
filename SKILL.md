@@ -160,11 +160,10 @@ When you flag one:
   that's a human call.
 - **Don't expand scope because it feels important.** A flagged incident
   becomes one entry in `LESSONS_LEARNED.md` at session end — not a new
-  file, not a new process, not a new checklist. If it's substantial
-  enough to need the fuller Open PRAOP Case Submission Template (What
-  were you trying to do / What actually happened / Why did it matter /
-  etc.), draft that inline under the `LESSONS_LEARNED.md` entry, not as
-  a new file.
+  process, not a new checklist. If it looks substantial enough to
+  warrant the fuller Open PRAOP Case treatment, that's what
+  `praop-case-draft` is for (see "Potential PRAOP Case Recording"
+  below) — mention it, don't draft it yourself here.
 
 ## Session End
 
@@ -207,12 +206,11 @@ For each file that does change:
   most sessions. Keep it short: next objective, first action, blockers,
   anything explicitly not to reopen, open questions.
 
-## Potential PRAOP Case Recording (manual — no tooling)
+## Potential PRAOP Case Recording
 
-At session end, in addition to the four-file updates above, check
-whether anything this session matches one of these. **Don't force it**
-for an ordinary bug, a typo, or a one-off failure — most sessions won't
-have one:
+At session end, check whether anything this session matches one of
+these. **Don't force it** for an ordinary bug, a typo, or a one-off
+failure — most sessions won't have one:
 
 - inference stated as fact;
 - inconsistent conclusions across the session;
@@ -227,18 +225,20 @@ have one:
 - the event exposes an operational pattern that might transfer to other
   agent projects.
 
-**If one matches**, append a `## Potential PRAOP Case — Not Submitted`
-block to `DEVELOPMENT_MEMORY.md` with this shape: Date / Agent / Project
-/ Task, then Observed behavior, Evidence, Immediate impact,
-Interpretation (explicitly marked as interpretation, not fact),
-Alternative explanations, Potentially reusable lesson, Sensitive
-information, Current disposition (always "Potential case only — not
-submitted for public review"), Unresolved, Tooling signal, Next check.
-Never mark it Accepted, Operational, or Canonical — that's a human
-decision, later, through Open PRAOP's own submission process, not
-something this session decides for itself.
+**If one matches:** mention that a Potential PRAOP Case may be worth
+drafting, and add one short pointer to `DEVELOPMENT_MEMORY.md` — what
+was observed, where the source material lives — not a full case
+write-up. **Do not draft, structure, evidence-tag, or submit a case
+yourself.** That's the job of a separate, optional, explicitly-invoked
+companion skill, **`praop-case-draft`** — it owns the full chain
+(factual timeline, Plain-Language Version, Observed / Interpretation /
+Hypothesis, anti-mapping, evidence status, de-identification, human
+review) and only runs when a human asks for it by name. This skill's
+job stops at noticing and mentioning. Never mark anything Accepted,
+Operational, or Canonical yourself — that stays a human decision,
+later, through Open PRAOP's own process.
 
-**If nothing matches**, say so explicitly: "No potential PRAOP case
+**If nothing matches:** say so explicitly — "No potential PRAOP case
 identified in this session." That's still useful pilot evidence, not a
 gap.
 
@@ -248,24 +248,16 @@ Either way, add a short dated entry to `DEVELOPMENT_MEMORY.md`:
 ## YYYY-MM-DD — PRAOP Pilot Observation
 Agent: / Task: / Files changed:
 ### Verified / Observed / Inferred
-### Potential PRAOP case: None | Added a Potential PRAOP Case — Not Submitted
+### Potential PRAOP case: None | Mentioned — candidate for `praop-case-draft`
 ### Tooling signal: No tooling need demonstrated | Repeated manual friction observed; candidate for future tooling review
 ### Unresolved
 ### Next recommended check
 ```
 
-If a potential case involves any customer, personal, company, or
-system-identifying information: don't copy the raw data in — use
-`[REDACTED]` or an abstract description, and record:
-
-```
-De-identification required: Yes/No
-Human review required: Yes/No
-Public submission: Not allowed in this session
-```
-
-Never submit anything to Open PRAOP or open a public PR from this step
-alone — that requires an explicit human decision outside this file.
+Never submit anything to Open PRAOP, open a public PR, or draft a full
+case from this step alone — drafting and de-identification are
+`praop-case-draft`'s job (see that skill for its own submission gate),
+and either way require an explicit human decision.
 
 ## What this skill does not do
 
@@ -278,9 +270,11 @@ alone — that requires an explicit human decision outside this file.
   [Open PRAOP](https://github.com/vincentwang2014/open-praop) as a real
   Case, following that repo's own submission and de-identification
   process.
-- It does not require a fifth file. See "During the Session" above —
-  a substantial incident gets drafted inline in `LESSONS_LEARNED.md`,
-  not given its own file.
+- It does not require a fifth file for ordinary lessons — see "During
+  the Session" above. A case substantial enough for full drafting goes
+  through `praop-case-draft`, which does use its own file — that's a
+  deliberate choice in that skill, not something this skill does
+  itself.
 - It does not carry Open PRAOP's full doctrine. See "Where this kernel
   ends" above.
 
