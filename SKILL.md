@@ -207,6 +207,66 @@ For each file that does change:
   most sessions. Keep it short: next objective, first action, blockers,
   anything explicitly not to reopen, open questions.
 
+## Potential PRAOP Case Recording (manual — no tooling)
+
+At session end, in addition to the four-file updates above, check
+whether anything this session matches one of these. **Don't force it**
+for an ordinary bug, a typo, or a one-off failure — most sessions won't
+have one:
+
+- inference stated as fact;
+- inconsistent conclusions across the session;
+- claimed "done" when it wasn't;
+- repeated ineffective actions, or an inability to stop;
+- lost key context;
+- tool behavior inconsistent with the final narrative;
+- the human had to repeatedly correct the agent;
+- a fix introduced a new problem;
+- the page/system claims a capability the actual interaction doesn't
+  support;
+- the event exposes an operational pattern that might transfer to other
+  agent projects.
+
+**If one matches**, append a `## Potential PRAOP Case — Not Submitted`
+block to `DEVELOPMENT_MEMORY.md` with this shape: Date / Agent / Project
+/ Task, then Observed behavior, Evidence, Immediate impact,
+Interpretation (explicitly marked as interpretation, not fact),
+Alternative explanations, Potentially reusable lesson, Sensitive
+information, Current disposition (always "Potential case only — not
+submitted for public review"), Unresolved, Tooling signal, Next check.
+Never mark it Accepted, Operational, or Canonical — that's a human
+decision, later, through Open PRAOP's own submission process, not
+something this session decides for itself.
+
+**If nothing matches**, say so explicitly: "No potential PRAOP case
+identified in this session." That's still useful pilot evidence, not a
+gap.
+
+Either way, add a short dated entry to `DEVELOPMENT_MEMORY.md`:
+
+```
+## YYYY-MM-DD — PRAOP Pilot Observation
+Agent: / Task: / Files changed:
+### Verified / Observed / Inferred
+### Potential PRAOP case: None | Added a Potential PRAOP Case — Not Submitted
+### Tooling signal: No tooling need demonstrated | Repeated manual friction observed; candidate for future tooling review
+### Unresolved
+### Next recommended check
+```
+
+If a potential case involves any customer, personal, company, or
+system-identifying information: don't copy the raw data in — use
+`[REDACTED]` or an abstract description, and record:
+
+```
+De-identification required: Yes/No
+Human review required: Yes/No
+Public submission: Not allowed in this session
+```
+
+Never submit anything to Open PRAOP or open a public PR from this step
+alone — that requires an explicit human decision outside this file.
+
 ## What this skill does not do
 
 - It does not maintain a running incident log, case queue, or metrics
