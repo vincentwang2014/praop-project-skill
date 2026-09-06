@@ -82,13 +82,20 @@ PRAOP knowledge base (see "Where this kernel ends" below).
    Control Accretion, Lesson-Generalization Failure, or a Locked
    Inference Trajectory in every bug. Most bugs are just bugs. Forcing
    events into PRAOP's vocabulary because the vocabulary is available is
-   itself a failure mode worth watching for.
+   itself a failure mode worth watching for. The mirror applies too: if
+   a case doesn't fit any existing category, record the mismatch first —
+   don't invent a new category to hold it until repeated incidents
+   actually justify one (Open PRAOP §3, "No New Axis Without
+   Incidents").
 10. **Renhua / EDTCU applies beyond saved lessons.** Any plan, risk,
     decision, or handoff note that can't be explained in plain language
     to the person who owns the outcome hasn't actually been understood
     yet — abstraction can create a false sense of "I've got this" that
     fluent wording papers over. Apply the same plain-language check
-    there, not only to what gets saved as a lesson.
+    there, not only to what gets saved as a lesson. Passing this check
+    means the person can later recognize and apply the idea in a new
+    situation *without* being prompted — nodding along when it was first
+    explained doesn't count.
 
 **Where this kernel ends:** this skill carries enough of Open PRAOP to
 behave PRAOP-aware during real work. It does not carry Open PRAOP's case
