@@ -96,6 +96,24 @@ PRAOP knowledge base (see "Where this kernel ends" below).
     means the person can later recognize and apply the idea in a new
     situation *without* being prompted — nodding along when it was first
     explained doesn't count.
+11. **Infrastructure preflight, before discovery.** Before running a
+    live-discovery command to answer a question about this project's own
+    repo location, remote configuration, CLI tool availability, or a
+    canonical artifact's path — `git remote`, `gh repo`, a directory
+    search for a repo, a check for whether a tool is installed, or
+    similar — first check whether the answer is already recorded:
+    `DEVELOPMENT_MEMORY.md`, or whatever persistent memory store this
+    environment provides. Only run the discovery command if that record
+    is absent, ambiguous, stale, or contradicted by a live artifact you
+    are about to check anyway. This is stated as a MUST, and skipping it
+    when the record already had the answer is a process failure, not a
+    harmless shortcut — but it is still enforced by an agent choosing to
+    follow it, nothing more. Writing it as a MUST does not make it a
+    Process or Mechanical Enforcement control in Open PRAOP's own §9
+    sense; it stays Guidance until something outside the agent's own
+    compliance actually gates the discovery command. Don't describe a
+    future run of this rule as "fixed" or "verified" just because it
+    wasn't skipped a few times in a row — see Kernel rule 6.
 
 **Where this kernel ends:** this skill carries enough of Open PRAOP to
 behave PRAOP-aware during real work. It does not carry Open PRAOP's case

@@ -49,12 +49,13 @@ skills hand off to each other.
 
 `skills/praop/SKILL.md` has two layers, and they're not the same thing:
 
-- **Layer 1 — PRAOP Operating Kernel.** A short (10-rule) set of how to
+- **Layer 1 — PRAOP Operating Kernel.** A short (11-rule) set of how to
   *think and act* during real work — treat your own conclusions as
   probabilistic, prefer artifacts over memory, separate observation from
   interpretation, verify before declaring done, reopen assumptions
-  reality disagrees with, and don't let controls (including this skill's
-  own PRAOP-awareness) compound into ceremony.
+  reality disagrees with, check recorded infrastructure facts before
+  live discovery, and don't let controls (including this skill's own
+  PRAOP-awareness) compound into ceremony.
 - **Layer 2 — Project Memory / Handoff.** The four template files, and
   when to read/write them.
 
