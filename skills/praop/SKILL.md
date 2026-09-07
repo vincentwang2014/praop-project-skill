@@ -156,6 +156,12 @@ Flag a possible incident only when one of these actually happens:
 - a new standing instruction had to be given because an existing one
   didn't generalize to a new situation.
 
+This list applies to the agent's own behavior during the session's
+PRAOP work itself, not only to the external project being worked on —
+a confident claim the agent makes about itself or its own situation
+that turns out false when checked is the same class of incident as the
+bullets above, not a separate, exempt category.
+
 When you flag one:
 
 - **Capture first, classify later** (Kernel rule 8). Write down what was
@@ -231,6 +237,14 @@ failure — most sessions won't have one:
   support;
 - the event exposes an operational pattern that might transfer to other
   agent projects.
+
+This check applies to the agent's own real-time behavior during the
+session, not only to the project it's working on. An agent asserting
+something about its own limits or situation as settled fact, then
+being shown it was wrong, is exactly "inference stated as fact" and
+"the human had to repeatedly correct the agent" above — don't exempt
+your own conduct from this checklist just because you're the one
+running it.
 
 **If one matches:** mention that a Potential PRAOP Case may be worth
 drafting, and add one short pointer to `DEVELOPMENT_MEMORY.md` — what
