@@ -1,6 +1,6 @@
 ---
 name: praop-case-draft
-description: Turn a Potential PRAOP Case already noted somewhere (typically a DEVELOPMENT_MEMORY.md entry) into a structured, human-reviewable case draft — factual timeline, Observed/Interpretation/Hypothesis split, anti-mapping check, evidence status, de-identification pre-check. Explicit-invocation only ("draft a PRAOP case from X", "run praop-case-draft on this"). Never triggers itself on an ordinary bug, incident, or session flag — praop-project-skill's kernel handles noticing; this skill only drafts, and only when asked.
+description: Turn a Potential PRAOP Case already noted somewhere (typically a DEVELOPMENT_MEMORY.md entry) — or an already-public external source such as a published incident report — into a structured, human-reviewable case draft — factual timeline, Observed/Interpretation/Hypothesis split, anti-mapping check, evidence status, de-identification pre-check (branched by whether the source is private or already public). Explicit-invocation only ("draft a PRAOP case from X", "run praop-case-draft on this"). Never triggers itself on an ordinary bug, incident, or session flag — praop-project-skill's kernel handles noticing; this skill only drafts, and only when asked.
 ---
 
 # PRAOP Case Draft
@@ -41,6 +41,16 @@ project's memory file, a raw incident description, or a session
 transcript excerpt. If the human just says "draft the case from
 [project]'s memory file" without naming which entry, and more than one
 exists, ask which one — don't guess or draft all of them at once.
+
+**A candidate is not always a private incident from this project's own
+history.** It can also be an already-public, externally-authored
+source — a published incident report, postmortem, paper, or similar —
+cited by title, publisher, and date, or by a document the human hands
+over directly. Verify such a source directly (read the actual document)
+before drafting anything from it; don't draft from a human's summary of
+an external source alone. State explicitly, near the top of the draft,
+which kind of source this is — private or already-public — since that
+choice determines which branch of step 6 applies.
 
 ## The chain
 
@@ -234,6 +244,25 @@ failure modes to watch for, not a generic checklist:
 
 ### 6. De-identification pre-check
 
+**First, determine which branch applies — get this right before doing
+anything else in this step, and say which one explicitly in the
+draft:**
+
+- **Private source** (the default case: this project's own memory, a
+  private client's records, a session transcript, an unpublished
+  incident) — follow "Private source," below.
+- **Already-public source** (a published report, postmortem, paper, or
+  similar, naming its own real organizations or people with their own
+  consent to that publication) — follow "Already-public source,"
+  below. Don't guess: a leaked or informally-shared document is not the
+  same as a published one. If there is any doubt whether the named
+  parties actually consented to this material being public, treat it
+  as a private source instead — the Already-public branch is for
+  sources that are unambiguously already public, not for sources that
+  merely seem like they wouldn't mind.
+
+#### Private source
+
 This step is not "strip identity out of the draft." Redact identity,
 *preserve causality* — an early draft that scrubs identifying detail
 too aggressively can destroy the evidence a reviewer actually needs
@@ -277,8 +306,49 @@ Human review required: Yes
 Public submission: Not allowed from this skill
 ```
 
-`Human review required` is always `Yes` for output of this skill — that
-line is not a per-case judgment call.
+#### Already-public source
+
+De-identification exists to protect a private party who did not choose
+public exposure. It does not apply when the source itself already
+names its real parties, by their own choice, in a document that was
+already public before this skill ever touched it — nothing this skill
+does can newly expose anyone in that situation.
+
+- **Confirm publication, don't assume it.** State what actually makes
+  this source public — a named publisher, a publication date, direct
+  access to the primary document — not just "this sounds like public
+  information."
+- **Named entities may, and normally should, stay named.**
+  Generalizing an already-named organization or person to "an AI lab"
+  or "a private individual" misrepresents the draft's own evidentiary
+  source as private when it isn't, and makes the draft harder for a
+  reviewer to verify against its own citations.
+- **Don't let private material ride in under the public source's
+  cover.** Anything added on top of the public document — a
+  maintainer's own private commentary, a detail from a private
+  conversation about the source, a name or fact that isn't actually in
+  the published material — follows the Private source branch above for
+  that added material specifically, even inside a draft whose primary
+  source is public. Being public-sourced is a property of the cited
+  document, not a blanket exemption for the whole draft.
+- **The secrets rule is unconditional and doesn't change by branch.**
+  Never copy a credential, token, or key into the draft, regardless of
+  source type — a published report having already redacted its own
+  secrets doesn't relax this.
+
+Record:
+
+```
+Secrets present in source: Yes/No
+Source already public: Yes — [publisher/author, title, date, or a direct citation a reviewer can check]
+De-identification required for public submission: Not applicable — source already public
+Combination-risk checked: Not applicable — no private detail exists to combine
+Human review required: Yes
+Public submission: Not allowed from this skill
+```
+
+`Human review required` is always `Yes` for output of this skill,
+regardless of branch — that line is not a per-case judgment call.
 
 ### 7. Disposition — stop here
 
@@ -307,7 +377,7 @@ The human's response is one of:
   draft. Say so explicitly in the disposition when it applies, rather
   than treating Reject as "discard."
 
-### 8. Open PRAOP submission — separate, later, explicit, and never the raw draft
+### 8. Open PRAOP submission — separate, later, explicit, and (for a private-sourced draft) never the raw draft
 
 Only after an explicit **Approve**, and only if the human separately
 asks to submit, follow Open PRAOP's own submission process for that
@@ -315,22 +385,34 @@ repo. This skill's job ends at the reviewable draft; it does not open
 a PR, does not push to `open-praop`, and does not decide submission is
 warranted on its own.
 
-**The working draft this skill produced is never what gets submitted.**
-Per step 6, it may legitimately carry identifying detail kept for
-causality — that's exactly why it can't go public as-is. Submission
-means producing the *separate*, de-identified, combination-risk-checked
-version described in step 6, and only that version ever reaches a PR.
-Open PRAOP's own protocol (§11) explicitly keeps no public `drafts/` or
-`case-drafts/` directory in that repo — this skill's own `case-drafts/`
-output directory (below) is a private, local convention for the
-invoking project, not something that gets pushed to a public repo,
-ever.
+**For a Private-source draft (step 6), the working draft this skill
+produced is never what gets submitted.** It may legitimately carry
+identifying detail kept for causality — that's exactly why it can't go
+public as-is. Submission means producing the *separate*, de-identified,
+combination-risk-checked version described in step 6, and only that
+version ever reaches a PR. Open PRAOP's own protocol (§11) explicitly
+keeps no public `drafts/` or `case-drafts/` directory in that repo —
+this skill's own `case-drafts/` output directory (below) is a private,
+local convention for the invoking project, not something that gets
+pushed to a public repo, ever. (See below for the Already-public-source
+exception to the "never the raw draft" half of this rule specifically —
+the rest of this step still applies to both branches.)
 
 **A PR is public the instant it opens, not after it merges.** Closing
 or rejecting it later doesn't undo that. Never open a PR "to get
 feedback" before the de-identification and combination-risk check in
 step 6 are both complete — do that check first, on the private draft,
 then open the PR with only the already-de-identified content.
+
+**Already-public-source exception to the above:** if step 6 was run
+under the Already-public source branch, there is no separate
+de-identified version to produce — the working draft and the
+submission-ready content can be the same document, since step 6 found
+nothing that needed stripping. This shortens the distance to
+submission; it does not shorten the process itself. An explicit
+**Approve** is still required before anything is submitted, and
+submission is still a separate, later, explicit human act this skill
+does not perform on its own.
 
 ## Naming and location
 
@@ -362,8 +444,9 @@ flagged.
 **Observed / Active.** Validated across three real drafts before
 publication (one revised and retained as a Potential PRAOP Case, two
 rejected as case material but each still producing a real project-local
-lesson — see the disposition philosophy in step 7). Treat this as a
-working v2.4, not a fully settled interface.
+lesson — see the disposition philosophy in step 7), plus two further
+drafts built from an already-public external source (v2.5, see below).
+Treat this as a working v2.5, not a fully settled interface.
 
 **Revision history:**
 
@@ -414,3 +497,19 @@ working v2.4, not a fully settled interface.
   Matches a same-day Open PRAOP protocol hardening (§11's "no public
   drafts/ directory" rule, §12's "de-identify before the PR exists, not
   during its review" rule).
+- 2026-09-08 v2.5 — added an already-public-source branch to Input and
+  step 6, after a real drafting session needed one and had to improvise
+  it inline: every prior draft this skill produced was sourced from a
+  private incident needing de-identification before any public step,
+  and the skill had no explicit path for a source that is already
+  public (a published third-party report naming its own real
+  organizations, with their own consent). Added an explicit fork at the
+  top of step 6 (Private source / Already-public source), a matching
+  branch of the de-identification Record block, and a corresponding
+  note in step 8 that the already-public branch has no separate
+  de-identified version to produce — while keeping Maintainer Review's
+  explicit Approve and the "this skill never submits" rule unchanged
+  for both branches. Also added a caution against letting private
+  commentary ride into a draft under an already-public source's cover,
+  and against generalizing an already-named public entity into an
+  anonymized placeholder it doesn't need.
