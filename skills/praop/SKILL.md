@@ -1,6 +1,6 @@
 ---
 name: praop
-description: PRAOP-aware project operating discipline for AI-assisted work — a short operating kernel (treat AI output as probabilistic, prefer artifact over memory, separate observation from interpretation, verify before declaring done, don't let controls compound unchecked) plus a four-file memory/handoff discipline across sessions, with every saved lesson passed through the EDTCU plain-language test.
+description: PRAOP-aware project operating discipline for AI-assisted work — a short operating kernel (treat AI output as probabilistic, prefer artifact over memory, separate observation from interpretation, verify before declaring done, don't let controls compound unchecked) plus a four-file memory/handoff discipline across sessions, with every saved lesson passed through the EDTCU plain-language test. TRIGGER — invoke this explicitly at the START of every session in any project where it's installed (before reading project files or doing any work) and AGAIN when a session is ending (before declaring memory files up to date). Installing this skill does not make its rules active by itself — a skill's contents only take effect when actually invoked, so treat "this project has praop installed" itself as the trigger condition, every session, not a one-time setup step.
 ---
 
 # PRAOP Project Skill
@@ -12,6 +12,17 @@ being written down. Part of
 vocabulary (Observed / Emerging / Operational / Canonical confidence,
 Active / Contested / Deprecated status, E0–E3 evidence levels, the
 EDTCU / Renhua plain-language test) instead of inventing a parallel one.
+
+> **Being installed in a project is not the same as being active in a
+> session.** A skill's contents only load into an agent's working
+> context when it is actually invoked — installing `SKILL.md` under
+> `.claude/skills/` (or your tool's equivalent) makes it *available*,
+> visible as a name and one-line description, not *running*. If you are
+> an agent working in a project where this skill is installed and you
+> have not yet invoked it this session, invoke it now, before going
+> further — do not substitute "I can see what the existing memory files
+> look like, I'll match their style" for actually reading this skill's
+> own rules. That substitution looks plausible and quietly drifts.
 
 This skill has two layers, and they are not the same thing:
 
