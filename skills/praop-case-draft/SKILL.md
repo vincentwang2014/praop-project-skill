@@ -100,6 +100,23 @@ if the anti-mapping case is written first and doesn't defeat it. This
 is `praop-project-skill` kernel rule 9 ("No Fit is valid") applied as a
 mandatory drafting step, not a passing reminder.
 
+**Record the outcome formally, using Open PRAOP protocol §21.3's
+vocabulary and the matcher pack actually used:**
+
+```
+Local match outcome: MATCH | PARTIAL | NO_FIT | UNMATCHED
+Matcher pack used: schema_version <X>, corpus_revision <Y> (or "None available")
+```
+
+If `UNMATCHED`, add `local_status: POTENTIAL_NEW_MECHANISM` and
+`transmission_status: LOCAL_ONLY`, and state plainly that this creates
+no obligation, asserts no new Pattern, and changes no existing
+Pattern's Confidence or Status (§21.4). `NO_FIT` (a mechanism was
+actively compared against and rejected — the anti-mapping reasoning
+above) and `UNMATCHED` (the pack had nothing to compare against in the
+first place) are different findings — don't collapse them into one
+"doesn't fit" note.
+
 ### 4. Evidence status
 
 Assign an Open PRAOP evidence level, E0–E3 (§8) — reuse the existing
@@ -385,6 +402,25 @@ repo. This skill's job ends at the reviewable draft; it does not open
 a PR, does not push to `open-praop`, and does not decide submission is
 warranted on its own.
 
+**Before any transmission, show the human the exact destination
+repository, the exact files and fields to be sent, the complete diff
+or an equivalent full payload preview, and what de-identification
+removed or generalized** (Open PRAOP protocol §21.7). An **Approve** on
+the draft is not itself authorization to transmit — that authorization
+is obtained separately, against the actual payload and destination
+shown at submission time, and it covers only that exact payload; a
+changed payload, even a small post-approval wording fix, needs to be
+shown and authorized again, not assumed still covered. Opening a PR
+means the Case is submitted for review — it does not mean the Case is
+Accepted.
+
+**If the protocol or matcher-pack-schema version this draft's step 3
+outcome relied on cannot be confirmed compatible with the target
+repository's current state, fail closed for this submission action
+specifically** — say so plainly and stop before any transmission step.
+This never blocks local recording or continued private drafting, only
+external contribution itself.
+
 **For a Private-source draft (step 6), the working draft this skill
 produced is never what gets submitted.** It may legitimately carry
 identifying detail kept for causality — that's exactly why it can't go
@@ -446,9 +482,31 @@ publication (one revised and retained as a Potential PRAOP Case, two
 rejected as case material but each still producing a real project-local
 lesson — see the disposition philosophy in step 7), plus two further
 drafts built from an already-public external source (v2.5, see below).
-Treat this as a working v2.5, not a fully settled interface.
+Treat this as a working v2.6, not a fully settled interface.
+
+**Protocol binding:** Open PRAOP commit `11981b4` (protocol §21 v1 /
+matcher-pack `schema_version` `"1"`). If a target repository's current
+protocol or matcher-pack schema cannot be confirmed compatible with
+this binding, this skill fails closed for step 8 (external
+contribution only — see step 8).
 
 **Revision history:**
+
+- 2026-09-17 v2.6 — bound to Open PRAOP protocol §21 (Local-First Case
+  Discovery and Public Contribution Boundary), merged as commit
+  `11981b4`: step 3 now records a formal `MATCH`/`PARTIAL`/`NO_FIT`/
+  `UNMATCHED` local match outcome and matcher-pack version per §21.3,
+  with `UNMATCHED` producing a `local_status: POTENTIAL_NEW_MECHANISM`
+  / `transmission_status: LOCAL_ONLY` record that creates no obligation
+  and asserts no new Pattern (§21.4); step 8 now requires a full
+  destination/payload/de-identification preview and per-payload
+  authorization before any transmission (§21.7), states explicitly that
+  opening a PR means submission, not Accept, and fails closed for
+  submission specifically if this binding's protocol/schema version
+  can't be confirmed compatible with the target repo. Companion change
+  in `praop-project-skill`'s own `praop` skill: Kernel rule 12 (Private
+  Case Locality Boundary), and a matcher-pack check added to Potential
+  PRAOP Case Recording.
 
 - 2026-09-05 v1 — first version, run against two real candidates
   (dual-source sync drift; shared-agent protocol drift).
