@@ -125,6 +125,26 @@ PRAOP knowledge base (see "Where this kernel ends" below).
     compliance actually gates the discovery command. Don't describe a
     future run of this rule as "fixed" or "verified" just because it
     wasn't skipped a few times in a row — see Kernel rule 6.
+12. **Private Case Locality Boundary.** Case-derived material — not just
+    raw incident text, but also hashes, fingerprints, embeddings,
+    normalized mechanism statements, project or repository names, paths,
+    commit identifiers, timestamps, match results, and any query term
+    derived from an incident — must stay within the project scope the
+    human has explicitly authorized. Never scan another project, create a
+    cross-project or remote registry, publish a fingerprint, run
+    background synchronization, upload telemetry about a match or
+    non-match, query a peer-to-peer network, or transmit anything
+    Case-derived to a remote destination — including opening a PR —
+    unless the human has explicitly authorized that specific source
+    scope, destination, and payload, for that one action. A hash is not
+    de-identification; encryption alone is not authorization.
+    Authorization for one submission never carries over to a later one.
+    The authoritative text is Open PRAOP protocol §21.6 (`Private Case
+    Locality Boundary`) — this rule points to that section rather than
+    restate it in full, so the two can't drift; if they ever disagree,
+    §21.6 governs. Like rule 11, this is stated as a MUST but enforced
+    only by an agent choosing to follow it — nothing in this skill can
+    mechanically block a disallowed action yet.
 
 **Where this kernel ends:** this skill carries enough of Open PRAOP to
 behave PRAOP-aware during real work. It does not carry Open PRAOP's case
@@ -275,6 +295,18 @@ being shown it was wrong, is exactly "inference stated as fact" and
 your own conduct from this checklist just because you're the one
 running it.
 
+**Before deciding whether one matches, check the public matcher pack, if
+one is available** — bundled with this skill, or found in a local
+`open-praop` clone's `matcher-pack/` directory. Never fetch or select a
+pack based on the incident's own content — see Kernel rule 12. Compare
+the observed behavior against it per Open PRAOP protocol §21.3 and
+record one of `MATCH` / `PARTIAL` / `NO_FIT` / `UNMATCHED`, plus which
+pack version (`schema_version`, `corpus_revision`) was used. An
+`UNMATCHED` result is not evidence of a new Pattern (§21.4) — it only
+means this pack found no candidate. If no pack is available at all, say
+so honestly ("no matcher pack available, comparison not attempted")
+rather than silently skipping the record.
+
 **If one matches:** mention that a Potential PRAOP Case may be worth
 drafting, and add one short pointer to `DEVELOPMENT_MEMORY.md` — what
 was observed, where the source material lives — not a full case
@@ -299,6 +331,8 @@ Either way, add a short dated entry to `DEVELOPMENT_MEMORY.md`:
 Agent: / Task: / Files changed:
 ### Verified / Observed / Inferred
 ### Potential PRAOP case: None | Mentioned — candidate for `praop-case-draft`
+### Local match outcome: MATCH | PARTIAL | NO_FIT | UNMATCHED | Not attempted (no pack available)
+### Matcher pack version used: <schema_version>/<corpus_revision>, or None
 ### Tooling signal: No tooling need demonstrated | Repeated manual friction observed; candidate for future tooling review
 ### Unresolved
 ### Next recommended check
@@ -307,7 +341,10 @@ Agent: / Task: / Files changed:
 Never submit anything to Open PRAOP, open a public PR, or draft a full
 case from this step alone — drafting and de-identification are
 `praop-case-draft`'s job (see that skill for its own submission gate),
-and either way require an explicit human decision.
+and either way require an explicit human decision. Recording a local
+match outcome, or a `POTENTIAL_NEW_MECHANISM` note, is not itself a
+transmission and is not restricted by this — see Kernel rule 12 for
+what actually counts as one.
 
 ## What this skill does not do
 
