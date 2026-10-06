@@ -171,7 +171,8 @@ them, and how to avoid the discipline itself becoming ceremony.
 
 1. Read all four files.
 2. In 5–10 lines, restate: current objective, known constraints, open
-   risks, first action for this session.
+   risks, first action for this session, and your role in it (see
+   "Session Role" below).
 3. Do not reopen a question already marked closed in `TOMORROW.md` or
    `LESSONS_LEARNED.md` unless new evidence has appeared since it was
    closed (Kernel rule 4). If you think you have new evidence, say so
@@ -226,6 +227,34 @@ When you flag one:
   warrant the fuller Open PRAOP Case treatment, that's what
   `praop-case-draft` is for (see "Potential PRAOP Case Recording"
   below) — mention it, don't draft it yourself here.
+
+## Session Role (who may write the memory files)
+
+Layer 1 applies in every session, whatever the agent's job. Layer 2's
+**writes** do not: updating the four files is a duty of a session whose
+role includes writing them.
+
+- At session start, take your role from what the person or script that
+  started the session said (for example "read-only review; write only
+  your report", or a role assigned from a project role template). Don't
+  infer a wider role from this skill being installed, or from a global
+  instruction to "run session end every session".
+- If the role does not include writing project memory files (a reviewer,
+  an observer, any read-only request): read the files as usual, but at
+  session end write nothing to them. Put what would have gone there
+  (observations, a candidate lesson, a Potential PRAOP Case note) in a
+  short "PRAOP notes" section at the end of your own output, such as the
+  review report. A session that may write the memory files decides
+  whether to record them.
+- If the role is unclear, treat it as not including memory writes, and
+  say so in your output.
+- When this skill and the session's role disagree, the role wins: a
+  narrower instruction from whoever started the session is not
+  overridden by this skill's general trigger.
+
+(This rule came from a real case: a reviewer asked for a read-only
+review appended entries to a project's memory file, because a global
+instruction told it to run this skill's session end in every session.)
 
 ## Session End
 
