@@ -12,6 +12,9 @@ noticed Potential PRAOP Case into a structured, human-reviewable draft.
 
 ```text
 praop-project-skill/
+├── .claude-plugin/
+│   ├── marketplace.json          makes this repo a Claude Code plugin marketplace
+│   └── plugin.json               the one plugin it lists: this repo, both skills
 ├── skills/
 │   ├── praop/
 │   │   └── SKILL.md              Layer 1 (PRAOP Operating Kernel) + Layer 2 (how to use the four template files)
@@ -37,12 +40,49 @@ layout, re-copy from `skills/` and `templates/` now.
 
 ## Installing
 
+Pick one of three ways to get the skills. Whichever you pick, copy
+`templates/*` into your project yourself (its root, or wherever project
+docs live): neither installer copies the templates.
+
+**Claude Code plugin** (Claude Code only). This repo is a plugin
+marketplace:
+
+```text
+/plugin marketplace add vincentwang2014/praop-project-skill
+/plugin install praop@praop
+```
+
+The plugin carries both skills. Inside Claude Code their names get the
+plugin prefix: `praop:praop` and `praop:praop-case-draft`. To update,
+run `/plugin marketplace update praop`, or turn on auto-update for this
+marketplace in `/plugin` → Marketplaces (it is off by default for
+third-party marketplaces like this one). The plugin has no version number of
+its own, so an update brings whatever is on `master`.
+
+**`npx skills`** (Claude Code, Codex and other agents that read Agent
+Skills):
+
+```text
+npx skills add vincentwang2014/praop-project-skill
+npx skills update
+```
+
+`add` asks which skills and which agents; for Claude Code the skills
+land in `.claude/skills/`, for Codex in `.agents/skills/`.
+
+**By hand:**
+
 - `skills/praop/` → your project's `.claude/skills/praop/` (mandatory
   kernel).
 - `skills/praop-case-draft/` → your project's
   `.claude/skills/praop-case-draft/` (optional; only needed if you want
   the case-drafting workflow).
-- `templates/*` → your project's root, or wherever project docs live.
+
+To update, copy them again; nothing updates a hand copy for you.
+
+Each skill's version is in its `SKILL.md` frontmatter, under
+`metadata.version`. Compare it with the one here to see whether your
+copy is behind.
 
 See each skill's own `SKILL.md` for what to fill in and how the two
 skills hand off to each other.

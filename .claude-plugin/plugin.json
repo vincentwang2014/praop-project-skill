@@ -1,0 +1,10 @@
+{
+  "name": "praop",
+  "description": "PRAOP project discipline: the praop operating kernel and four-file memory/handoff skill, plus the optional praop-case-draft companion.",
+  "author": {
+    "name": "Vincent Wang",
+    "url": "https://github.com/vincentwang2014"
+  },
+  "homepage": "https://github.com/vincentwang2014/praop-project-skill",
+  "repository": "https://github.com/vincentwang2014/praop-project-skill"
+}

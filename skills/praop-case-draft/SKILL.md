@@ -1,6 +1,8 @@
 ---
 name: praop-case-draft
 description: Turn a Potential PRAOP Case already noted somewhere (typically a DEVELOPMENT_MEMORY.md entry) — or an already-public external source such as a published incident report — into a structured, human-reviewable case draft — factual timeline, Observed/Interpretation/Hypothesis split, anti-mapping check, evidence status, de-identification pre-check (branched by whether the source is private or already public). Explicit-invocation only ("draft a PRAOP case from X", "run praop-case-draft on this"). Never triggers itself on an ordinary bug, incident, or session flag — praop-project-skill's kernel handles noticing; this skill only drafts, and only when asked.
+metadata:
+  version: "2.6.0"
 ---
 
 # PRAOP Case Draft
