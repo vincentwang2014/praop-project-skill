@@ -1,0 +1,15 @@
+{
+  "name": "praop",
+  "description": "PRAOP project skills: an operating kernel and memory/handoff discipline for AI-assisted project work.",
+  "owner": {
+    "name": "Vincent Wang",
+    "url": "https://github.com/vincentwang2014"
+  },
+  "plugins": [
+    {
+      "name": "praop",
+      "source": "./",
+      "description": "PRAOP project discipline: the praop operating kernel and four-file memory/handoff skill, plus the optional praop-case-draft companion."
+    }
+  ]
+}
